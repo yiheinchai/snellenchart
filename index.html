@@ -269,6 +269,22 @@
       }
 
 
+      .near-banner {
+        padding: 10px 1.25rem;
+        background: #f0f9ff;
+        border-bottom: 1px solid #bae6fd;
+        font-size: 13px;
+        font-weight: 500;
+        color: #0c4a6e;
+        display: none;
+        align-items: center;
+        gap: 8px;
+        line-height: 1.5;
+      }
+      .near-banner.visible {
+        display: flex;
+      }
+
       .eye-banner {
         padding: 10px 1.25rem;
         background: #fef3c7;
@@ -542,6 +558,7 @@
           grid-template-columns: repeat(2, 1fr);
         }
         .eye-banner,
+        .near-banner,
         .device-detected {
           padding-left: 2rem;
           padding-right: 2rem;
@@ -588,7 +605,8 @@
           min-height: 38px;
         }
         .device-detected,
-        .eye-banner {
+        .eye-banner,
+        .near-banner {
           padding-left: 0.75rem;
           padding-right: 0.75rem;
         }
@@ -648,6 +666,11 @@
         </div>
       </div>
     </nav>
+
+    <div class="near-banner" id="nearBanner">
+      <span>&#128207;</span>
+      <span id="nearText"></span>
+    </div>
 
     <div class="eye-banner" id="eyeBanner">
       <span id="eyeIcon">&#9680;</span>
@@ -932,10 +955,23 @@
           updateCalibrationCard();
         });
 
+      function updateNearBanner() {
+        var banner = document.getElementById("nearBanner");
+        if (distanceM <= 0.5) {
+          banner.classList.add("visible");
+          document.getElementById("nearText").innerHTML =
+            "<strong>Near vision mode</strong> \u2014 tests reading acuity (accommodation + resolution). " +
+            "Will not detect short-sightedness. Use 1.5 m+ for distance acuity.";
+        } else {
+          banner.classList.remove("visible");
+        }
+      }
+
       document
         .getElementById("distSelect")
         .addEventListener("change", function (e) {
           distanceM = parseFloat(e.target.value);
+          updateNearBanner();
           renderChart();
         });
 
@@ -1012,6 +1048,7 @@
           d.name +
           "</strong> \u2014 screen and distance auto-selected";
         banner.classList.add("visible");
+        updateNearBanner();
         renderChart();
       })();
 
@@ -1019,6 +1056,128 @@
       document.addEventListener("gesturestart", function (e) {
         e.preventDefault();
       });
+
+      // ── Usage tracking ──
+      (function () {
+        var SESSION_KEY = "sc_session";
+        var EVENTS_KEY = "sc_events";
+        var sessionStart = Date.now();
+
+        function getSessionId() {
+          var sid = sessionStorage.getItem(SESSION_KEY);
+          if (!sid) {
+            sid = Math.random().toString(36).slice(2) + Date.now().toString(36);
+            sessionStorage.setItem(SESSION_KEY, sid);
+          }
+          return sid;
+        }
+
+        function track(event, props) {
+          var entry = {
+            event: event,
+            ts: new Date().toISOString(),
+            sid: getSessionId(),
+            props: props || {},
+          };
+
+          // Append to sessionStorage log
+          var log = JSON.parse(sessionStorage.getItem(EVENTS_KEY) || "[]");
+          log.push(entry);
+          sessionStorage.setItem(EVENTS_KEY, JSON.stringify(log));
+
+          // Send to analytics endpoint if configured
+          if (window.SC_ANALYTICS_URL) {
+            navigator.sendBeacon(
+              window.SC_ANALYTICS_URL,
+              JSON.stringify(entry)
+            );
+          }
+        }
+
+        // Page load
+        var det = detectDevice();
+        track("page_load", {
+          device: det.name,
+          screen: det.diag,
+          distance: det.dist,
+          viewport: window.innerWidth + "x" + window.innerHeight,
+          dpr: window.devicePixelRatio || 1,
+          referrer: document.referrer || "(direct)",
+          ua: navigator.userAgent,
+        });
+
+        // Screen size change
+        document
+          .getElementById("monitorSelect")
+          .addEventListener("change", function (e) {
+            track("screen_change", { from: monitorDiag, to: parseFloat(e.target.value) });
+          });
+
+        // Distance change
+        document
+          .getElementById("distSelect")
+          .addEventListener("change", function (e) {
+            track("distance_change", { from: distanceM, to: parseFloat(e.target.value) });
+          });
+
+        // Eye mode change
+        document
+          .getElementById("eyeBtns")
+          .addEventListener("click", function (e) {
+            var btn = e.target.closest(".btn");
+            if (!btn) return;
+            track("eye_mode", { mode: btn.dataset.eye });
+          });
+
+        // Shuffle
+        document
+          .getElementById("shuffleBtn")
+          .addEventListener("click", function () {
+            track("shuffle");
+          });
+
+        // Calibrate
+        document
+          .getElementById("calibrateBtn")
+          .addEventListener("click", function () {
+            track("calibrate_open");
+          });
+
+        // Chart line tap
+        document
+          .getElementById("chartLines")
+          .addEventListener("click", function (e) {
+            var line = e.target.closest(".chart-line");
+            if (!line) return;
+            var label = line.querySelector(".chart-line-label");
+            if (label) track("line_tap", { line: label.textContent.trim() });
+          });
+
+        // Session duration on unload
+        window.addEventListener("beforeunload", function () {
+          var duration = Math.round((Date.now() - sessionStart) / 1000);
+          var log = JSON.parse(sessionStorage.getItem(EVENTS_KEY) || "[]");
+          track("session_end", {
+            duration_s: duration,
+            total_events: log.length,
+            final_screen: monitorDiag,
+            final_distance: distanceM,
+            final_eye: coverEye,
+          });
+        });
+
+        // Expose for debugging: type SC_EVENTS() in console
+        window.SC_EVENTS = function () {
+          return JSON.parse(sessionStorage.getItem(EVENTS_KEY) || "[]");
+        };
+      })();
     </script>
+
+    <!-- Cloudflare Web Analytics -->
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "YOUR_CF_BEACON_TOKEN"}'
+    ></script>
   </body>
 </html>
