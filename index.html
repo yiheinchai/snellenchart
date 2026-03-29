@@ -1,0 +1,1038 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>
+      Free Online Snellen Chart — UK Metric Eye Test | Screen-Calibrated Vision
+      Test
+    </title>
+    <meta
+      name="description"
+      content="Free online Snellen eye chart using UK metric notation (6/6). Accurately sized for your laptop, iPhone or Android screen. Test your visual acuity from home with calibrated optotypes."
+    />
+    <meta
+      name="keywords"
+      content="snellen chart, online eye test, UK eye chart, metric snellen, visual acuity test, free vision test, 6/6 eye test, eye chart online, screen eye test, laptop eye test, phone eye test, iphone eye chart"
+    />
+    <meta name="author" content="Snellen Chart UK" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://snellenchart.uk/" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <meta
+      property="og:title"
+      content="Free Online Snellen Chart — UK Metric Eye Test"
+    />
+    <meta
+      property="og:description"
+      content="Screen-calibrated Snellen eye chart using UK metric notation. Test your visual acuity from your phone or laptop for free."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://snellenchart.uk/" />
+    <meta property="og:locale" content="en_GB" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Free Online Snellen Chart — UK Metric Eye Test"
+    />
+    <meta
+      name="twitter:description"
+      content="Screen-calibrated Snellen eye chart using UK metric notation. Test your visual acuity from your phone or laptop for free."
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Online Snellen Chart — UK Metric",
+        "description": "A free, screen-calibrated Snellen eye chart using UK metric notation (6/6). Works on laptops, iPhones, and Android phones.",
+        "url": "https://snellenchart.uk/",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+        "inLanguage": "en-GB"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a Snellen chart?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A Snellen chart measures visual acuity by displaying rows of letters that decrease in size. The smallest row you can read indicates your acuity level."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does 6/6 vision mean?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "6/6 means you can read at 6 metres what a person with standard vision reads at 6 metres. It is equivalent to 20/20 in the US system."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use a Snellen chart on my phone?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. This chart supports iPhones and Android phones. It calibrates letter sizes based on your phone screen. Hold the device at arm's length (about 30 cm) and select the matching screen size."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this a replacement for an eye test?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. This is a screening tool only. Always visit a qualified optometrist for a proper eye examination."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family:
+          "DM Sans",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        background: #fafaf8;
+        color: #1a1a1a;
+        -webkit-font-smoothing: antialiased;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .header {
+        border-bottom: 1px solid #e8e8e4;
+        padding: 1rem 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 8px;
+        background: #fff;
+      }
+      .header-left {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+      }
+      .header h1 {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+      .badge {
+        font-size: 10px;
+        font-weight: 500;
+        color: #2563eb;
+        background: #eff6ff;
+        padding: 2px 7px;
+        border-radius: 5px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .header-note {
+        font-size: 11px;
+        color: #999;
+      }
+
+      .device-detected {
+        padding: 8px 1.25rem;
+        background: #eff6ff;
+        border-bottom: 1px solid #bfdbfe;
+        font-size: 12px;
+        color: #1e40af;
+        display: none;
+        align-items: center;
+        gap: 6px;
+      }
+      .device-detected.visible {
+        display: flex;
+      }
+      .device-detected strong {
+        font-weight: 600;
+      }
+
+      .controls {
+        padding: 1rem 1.25rem;
+        border-bottom: 1px solid #e8e8e4;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        background: #fff;
+      }
+      .control-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        align-items: flex-end;
+      }
+      .control-group {
+        flex: 1;
+        min-width: 0;
+      }
+      .control-label {
+        font-size: 11px;
+        color: #999;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        display: block;
+        margin-bottom: 6px;
+      }
+      .btn-group {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 400;
+        cursor: pointer;
+        font-family: inherit;
+        background: #fff;
+        color: #555;
+        border: 1px solid #ddd;
+        transition: all 0.15s ease;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+      }
+      .btn:active {
+        transform: scale(0.97);
+      }
+      .btn.active {
+        background: #1a1a1a;
+        color: #fff;
+        border-color: #1a1a1a;
+        font-weight: 500;
+      }
+      .btn-calibrate {
+        background: #fff;
+        color: #2563eb;
+        border: 1px solid #bfdbfe;
+      }
+      .actions {
+        display: flex;
+        gap: 6px;
+      }
+
+      .scroll-row {
+        display: flex;
+        gap: 5px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 2px;
+      }
+      .scroll-row::-webkit-scrollbar {
+        display: none;
+      }
+      .scroll-row .btn {
+        flex-shrink: 0;
+      }
+
+      .eye-banner {
+        padding: 10px 1.25rem;
+        background: #fef3c7;
+        border-bottom: 1px solid #fde68a;
+        font-size: 13px;
+        font-weight: 500;
+        color: #92400e;
+        display: none;
+        align-items: center;
+        gap: 8px;
+      }
+      .eye-banner.visible {
+        display: flex;
+      }
+
+      .chart-area {
+        padding: 1.5rem 0.75rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #fff;
+        margin: 1rem;
+        border-radius: 12px;
+        border: 1px solid #e8e8e4;
+        min-height: 260px;
+        overflow-x: auto;
+      }
+      .info-bar {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 1.25rem;
+        font-size: 11px;
+        color: #999;
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+      }
+      .info-bar strong {
+        color: #555;
+      }
+
+      .chart-line {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        padding: 2px 0;
+      }
+      .chart-line-label {
+        font-size: 10px;
+        color: #bbb;
+        font-family: "DM Mono", monospace;
+        font-weight: 500;
+        width: 32px;
+        text-align: right;
+        flex-shrink: 0;
+        transition: color 0.2s ease;
+      }
+      .chart-line.revealed .chart-line-label {
+        color: #2563eb;
+      }
+      .chart-letters {
+        display: flex;
+        align-items: center;
+      }
+      .chart-letter {
+        line-height: 1;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 600;
+        color: #1a1a1a;
+        display: inline-block;
+        user-select: none;
+      }
+      .too-small {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+        opacity: 0.4;
+        cursor: default;
+      }
+      .too-small-label {
+        font-size: 10px;
+        color: #aaa;
+        font-family: "DM Mono", monospace;
+        width: 32px;
+        text-align: right;
+      }
+      .too-small-text {
+        font-size: 10px;
+        color: #ccc;
+        font-style: italic;
+      }
+      .size-annotation {
+        font-size: 10px;
+        color: #2563eb;
+        font-family: "DM Mono", monospace;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .standard-line {
+        width: 90%;
+        max-width: 500px;
+        border-top: 1px dashed #ef4444;
+        margin-top: 8px;
+        padding-top: 6px;
+        text-align: center;
+      }
+      .standard-line span {
+        font-size: 11px;
+        color: #ef4444;
+        font-weight: 500;
+      }
+
+      .usage {
+        padding: 1.25rem;
+        margin: 0 1rem 1rem;
+        background: #f7f7f5;
+        border-radius: 12px;
+        border: 1px solid #e8e8e4;
+      }
+      .usage h2 {
+        font-size: 14px;
+        font-weight: 600;
+        margin: 0 0 10px;
+      }
+      .usage-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        font-size: 13px;
+        color: #666;
+        line-height: 1.6;
+      }
+      .usage-grid strong {
+        color: #333;
+      }
+
+      .seo-content {
+        padding: 1.25rem;
+        margin: 0 1rem 1rem;
+        border-radius: 12px;
+        border: 1px solid #e8e8e4;
+        background: #fff;
+      }
+      .seo-content h2 {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 0 0 10px;
+      }
+      .seo-content h3 {
+        font-size: 14px;
+        font-weight: 600;
+        margin: 20px 0 6px;
+        color: #333;
+      }
+      .seo-content p {
+        font-size: 13px;
+        color: #555;
+        line-height: 1.7;
+        margin: 0 0 10px;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 1.5rem 1rem;
+        font-size: 11px;
+        color: #bbb;
+        border-top: 1px solid #e8e8e4;
+      }
+
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        padding: 1rem;
+      }
+      .modal-overlay.visible {
+        display: flex;
+      }
+      .modal {
+        background: #fff;
+        border-radius: 16px;
+        padding: 1.5rem;
+        max-width: 420px;
+        width: 100%;
+        text-align: center;
+      }
+      .modal h3 {
+        font-size: 17px;
+        font-weight: 500;
+        margin: 0 0 0.5rem;
+      }
+      .modal p {
+        color: #666;
+        font-size: 13px;
+        margin: 0 0 1.25rem;
+        line-height: 1.6;
+      }
+      .card-outline {
+        border: 2px dashed #2563eb;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #2563eb;
+        font-size: 12px;
+        font-weight: 500;
+        background: #eff6ff;
+        margin: 0 auto 1.25rem;
+      }
+      .btn-modal-close {
+        background: #1a1a1a;
+        color: #fff;
+        border: none;
+        padding: 10px 28px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        font-family: inherit;
+        min-height: 44px;
+      }
+
+      /* DESKTOP */
+      @media (min-width: 769px) {
+        .header {
+          padding: 1.25rem 2rem;
+        }
+        .header h1 {
+          font-size: 20px;
+        }
+        .controls {
+          padding: 1rem 2rem;
+        }
+        .control-row {
+          flex-wrap: nowrap;
+        }
+        .chart-area {
+          margin: 1.5rem 2rem;
+          padding: 2rem;
+        }
+        .chart-line {
+          gap: 16px;
+        }
+        .chart-line-label {
+          width: 48px;
+          font-size: 11px;
+        }
+        .too-small-label {
+          width: 48px;
+          font-size: 11px;
+        }
+        .info-bar {
+          gap: 32px;
+          font-size: 12px;
+        }
+        .usage,
+        .seo-content {
+          margin-left: 2rem;
+          margin-right: 2rem;
+          padding: 1.5rem 2rem;
+        }
+        .usage-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .eye-banner,
+        .device-detected {
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+        .actions {
+          margin-left: auto;
+        }
+        .seo-content h2 {
+          font-size: 18px;
+        }
+        .seo-content h3 {
+          font-size: 15px;
+        }
+        .seo-content p {
+          font-size: 14px;
+        }
+        .scroll-row {
+          flex-wrap: wrap;
+          overflow-x: visible;
+        }
+      }
+
+      /* SMALL PHONES */
+      @media (max-width: 399px) {
+        .header {
+          padding: 0.75rem;
+        }
+        .header h1 {
+          font-size: 16px;
+        }
+        .controls {
+          padding: 0.75rem;
+          gap: 10px;
+        }
+        .chart-area {
+          margin: 0.5rem;
+          padding: 1rem 0.5rem;
+        }
+        .usage,
+        .seo-content {
+          margin-left: 0.5rem;
+          margin-right: 0.5rem;
+          padding: 1rem;
+        }
+        .btn {
+          padding: 7px 9px;
+          font-size: 12px;
+          min-height: 38px;
+        }
+        .device-detected,
+        .eye-banner {
+          padding-left: 0.75rem;
+          padding-right: 0.75rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="device-detected" id="deviceBanner">
+      <span id="deviceText"></span>
+    </div>
+
+    <header class="header">
+      <div class="header-left">
+        <h1>Snellen chart</h1>
+        <span class="badge">UK / Metric</span>
+      </div>
+      <div class="header-note">
+        Screening tool — not a substitute for a professional eye test
+      </div>
+    </header>
+
+    <nav class="controls" aria-label="Chart settings">
+      <div class="control-row">
+        <div class="control-group">
+          <label class="control-label">Screen size</label>
+          <div class="btn-group scroll-row" id="monitorBtns">
+            <button class="btn" data-diag="5.4">5.4&Prime;</button>
+            <button class="btn" data-diag="5.8">5.8&Prime;</button>
+            <button class="btn" data-diag="6.1">6.1&Prime;</button>
+            <button class="btn" data-diag="6.7">6.7&Prime;</button>
+            <button class="btn" data-diag="13.3">13&Prime;</button>
+            <button class="btn" data-diag="16">16&Prime;</button>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-calibrate" id="calibrateBtn">Calibrate</button>
+          <button class="btn" id="shuffleBtn">Shuffle</button>
+        </div>
+      </div>
+      <div class="control-row">
+        <div class="control-group">
+          <label class="control-label">Viewing distance</label>
+          <div class="btn-group scroll-row" id="distBtns">
+            <button class="btn" data-dist="0.3">30 cm (phone)</button>
+            <button class="btn" data-dist="0.5">50 cm (laptop)</button>
+            <button class="btn" data-dist="1.5">1.5 m</button>
+            <button class="btn" data-dist="2">2 m</button>
+            <button class="btn" data-dist="3">3 m</button>
+            <button class="btn" data-dist="4">4 m</button>
+          </div>
+        </div>
+      </div>
+      <div class="control-row">
+        <div class="control-group">
+          <label class="control-label">Testing</label>
+          <div class="btn-group" id="eyeBtns">
+            <button class="btn" data-eye="left">Cover left</button>
+            <button class="btn active" data-eye="none">Both eyes</button>
+            <button class="btn" data-eye="right">Cover right</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="eye-banner" id="eyeBanner">
+      <span id="eyeIcon">&#9680;</span>
+      <span id="eyeText"></span>
+    </div>
+
+    <main
+      class="chart-area"
+      role="img"
+      aria-label="Snellen eye chart with decreasing letter sizes"
+    >
+      <div class="info-bar" id="infoBar"></div>
+      <div id="chartLines"></div>
+      <div class="standard-line"><span>6/6 = standard visual acuity</span></div>
+    </main>
+
+    <section class="usage">
+      <h2>How to use this online Snellen chart</h2>
+      <div class="usage-grid">
+        <div>
+          <strong>1. Set up</strong><br />The chart auto-detects your device.
+          Check the screen size is correct and hold your device (or sit) at the
+          specified distance. Use "Calibrate" to verify with a bank card.
+        </div>
+        <div>
+          <strong>2. Test each eye</strong><br />Cover one eye at a time. Read
+          each line from the top down. The smallest line you can read clearly is
+          your approximate acuity.
+        </div>
+        <div>
+          <strong>3. Interpret results</strong><br />6/6 is standard acuity
+          (equivalent to 20/20). 6/12 means you read at 6 m what others read at
+          12 m. Tap any line to see its physical size.
+        </div>
+        <div>
+          <strong>4. Important</strong><br />This is a screening tool only.
+          Screen rendering cannot replicate a calibrated optotype chart. See a
+          qualified optometrist for accurate results.
+        </div>
+      </div>
+    </section>
+
+    <section class="seo-content">
+      <h2>About the UK Snellen eye chart</h2>
+      <p>
+        The Snellen chart is the most widely recognised tool for testing visual
+        acuity. Developed by Dutch ophthalmologist Herman Snellen in 1862, it
+        remains the global standard for screening distance vision. In the United
+        Kingdom, the chart uses metric notation — distances are measured in
+        metres rather than the feet used in the United States.
+      </p>
+      <h3>How UK Snellen notation works</h3>
+      <p>
+        Each line is labelled with a fraction such as 6/6, 6/12, or 6/60. The
+        top number (6) is the testing distance in metres. The bottom number is
+        the distance at which a person with standard vision could read that
+        line. 6/6 is considered normal visual acuity and is equivalent to 20/20
+        in the US system.
+      </p>
+      <h3>Screen-calibrated optotypes</h3>
+      <p>
+        This online Snellen chart calculates the physical size each letter must
+        appear on your screen, based on your device and viewing distance. It
+        uses the Sloan letter set (C, D, E, F, H, K, N, O, P, R, S, T, U, V, Z)
+        — the same standardised optotypes used in clinical settings.
+      </p>
+      <h3>Using the chart on your phone</h3>
+      <p>
+        The chart supports iPhones and Android smartphones with screen sizes
+        from 5.4 to 6.7 inches. Hold your phone at arm's length (roughly 30 cm)
+        and select the matching screen size. Due to the smaller display, some of
+        the finest acuity lines may be too small to render — this is physically
+        accurate.
+      </p>
+      <h3>Testing from your laptop</h3>
+      <p>
+        Select the laptop distance option (50 cm) for testing from your normal
+        sitting position. For more accurate results, test at 2 metres or more.
+        Always test each eye individually and ensure good, even lighting with no
+        glare on the screen.
+      </p>
+      <h3>When to see an optometrist</h3>
+      <p>
+        An online eye chart is a useful screening tool but is not a substitute
+        for a professional eye examination. If you notice blurred vision,
+        difficulty reading, eye strain, or headaches, book an appointment with a
+        qualified optometrist. The NHS recommends eye tests every two years for
+        most adults, and annually for children and people over 60.
+      </p>
+    </section>
+
+    <footer class="footer">
+      <p>
+        This is a free screening tool and is not a medical device. Always
+        consult a qualified eye care professional for a comprehensive eye
+        examination.
+      </p>
+    </footer>
+
+    <div class="modal-overlay" id="calibrationModal">
+      <div class="modal">
+        <h3>Calibration check</h3>
+        <p>
+          Hold a standard bank card (or ID card) against the rectangle below. If
+          the sizes match, your screen size setting is correct.
+        </p>
+        <div class="card-outline" id="cardOutline">85.6 &times; 54.0 mm</div>
+        <button class="btn-modal-close" id="closeModal">Close</button>
+      </div>
+    </div>
+
+    <script>
+      const SLOAN = "CDEFHKNOPRSTUVZ";
+      const LINES = [
+        { label: "6/60", denom: 60, count: 1 },
+        { label: "6/36", denom: 36, count: 2 },
+        { label: "6/24", denom: 24, count: 3 },
+        { label: "6/18", denom: 18, count: 4 },
+        { label: "6/12", denom: 12, count: 5 },
+        { label: "6/9", denom: 9, count: 6 },
+        { label: "6/6", denom: 6, count: 7 },
+        { label: "6/5", denom: 5, count: 8 },
+      ];
+
+      let monitorDiag = 16.0;
+      let distanceM = 0.5;
+      let coverEye = "none";
+      let letterSeed = Math.floor(Math.random() * 100);
+      let revealedLine = null;
+
+      function detectDevice() {
+        const ua = navigator.userAgent;
+        const isMobile =
+          /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(
+            ua,
+          );
+        const dpr = window.devicePixelRatio || 1;
+        const cssShort = Math.min(window.screen.width, window.screen.height);
+
+        if (!isMobile) {
+          const physW = window.screen.width * dpr;
+          const physH = window.screen.height * dpr;
+          const physDiag = Math.sqrt(physW * physW + physH * physH);
+          if (physDiag < 3000)
+            return {
+              diag: 13.3,
+              dist: 0.5,
+              name: "13\u2033 laptop (detected)",
+            };
+          return { diag: 16, dist: 0.5, name: "16\u2033 laptop (detected)" };
+        }
+
+        if (/iPhone/i.test(ua)) {
+          if (cssShort <= 375 && dpr >= 3)
+            return { diag: 5.4, dist: 0.3, name: "iPhone mini / SE" };
+          if (cssShort <= 393) return { diag: 6.1, dist: 0.3, name: "iPhone" };
+          return { diag: 6.7, dist: 0.3, name: "iPhone Plus / Pro Max" };
+        }
+
+        if (cssShort <= 360)
+          return { diag: 5.8, dist: 0.3, name: "Android (small)" };
+        if (cssShort <= 400)
+          return { diag: 6.1, dist: 0.3, name: "Android phone" };
+        return { diag: 6.7, dist: 0.3, name: "Android (large)" };
+      }
+
+      function getCSS_PPI() {
+        const dpr = window.devicePixelRatio || 1;
+        const physW = window.screen.width * dpr;
+        const physH = window.screen.height * dpr;
+        return Math.sqrt(physW * physW + physH * physH) / monitorDiag / dpr;
+      }
+
+      function mmToPx(mm) {
+        return mm * (getCSS_PPI() / 25.4);
+      }
+      function letterHeightMm(denom) {
+        return denom * 1.4544 * (distanceM / 6);
+      }
+
+      function generateLetters(count, seed) {
+        const out = [];
+        let idx = seed;
+        for (let i = 0; i < count; i++) {
+          idx = (idx * 7 + 3) % SLOAN.length;
+          if (out.length > 0 && SLOAN[idx] === out[out.length - 1])
+            idx = (idx + 1) % SLOAN.length;
+          out.push(SLOAN[idx]);
+        }
+        return out;
+      }
+
+      function renderChart() {
+        const ppi = getCSS_PPI();
+        const container = document.getElementById("chartLines");
+        container.innerHTML = "";
+
+        const distLabel =
+          distanceM < 1
+            ? Math.round(distanceM * 100) + " cm"
+            : distanceM + " m";
+        document.getElementById("infoBar").innerHTML =
+          "<span>Screen: <strong>" +
+          monitorDiag +
+          "&Prime;</strong></span>" +
+          "<span>PPI: <strong>" +
+          Math.round(ppi) +
+          "</strong></span>" +
+          "<span>Distance: <strong>" +
+          distLabel +
+          "</strong></span>";
+
+        LINES.forEach(function (line, lineIdx) {
+          const hMm = letterHeightMm(line.denom);
+          const hPx = mmToPx(hMm);
+
+          if (hPx < 3) {
+            const row = document.createElement("div");
+            row.className = "too-small";
+            row.innerHTML =
+              '<span class="too-small-label">' +
+              line.label +
+              '</span><span class="too-small-text">Too small at this distance</span>';
+            container.appendChild(row);
+            return;
+          }
+
+          const letters = generateLetters(
+            line.count,
+            letterSeed + lineIdx * 13,
+          );
+          const gap = Math.max(hPx * 0.4, 3);
+          const isRevealed = revealedLine === lineIdx;
+
+          const row = document.createElement("div");
+          row.className = "chart-line" + (isRevealed ? " revealed" : "");
+          row.style.marginBottom = Math.max(hPx * 0.5, 6) + "px";
+
+          let inner =
+            '<span class="chart-line-label">' + line.label + "</span>";
+          inner += '<div class="chart-letters" style="gap:' + gap + 'px">';
+          letters.forEach(function (l) {
+            inner +=
+              '<span class="chart-letter" style="font-size:' +
+              hPx +
+              'px">' +
+              l +
+              "</span>";
+          });
+          inner += "</div>";
+
+          if (isRevealed) {
+            inner +=
+              '<span class="size-annotation">' +
+              hMm.toFixed(1) +
+              "mm &rarr; " +
+              Math.round(hPx) +
+              "px</span>";
+          }
+
+          row.innerHTML = inner;
+          row.addEventListener("click", function () {
+            revealedLine = revealedLine === lineIdx ? null : lineIdx;
+            renderChart();
+          });
+          container.appendChild(row);
+        });
+      }
+
+      function setActiveBtn(group, activeBtn) {
+        group.querySelectorAll(".btn").forEach(function (b) {
+          b.classList.remove("active");
+        });
+        activeBtn.classList.add("active");
+      }
+
+      function selectByData(groupId, attr, value) {
+        var btns = document.getElementById(groupId).querySelectorAll(".btn");
+        btns.forEach(function (b) {
+          b.classList.toggle("active", parseFloat(b.dataset[attr]) === value);
+        });
+      }
+
+      document
+        .getElementById("monitorBtns")
+        .addEventListener("click", function (e) {
+          var btn = e.target.closest(".btn");
+          if (!btn) return;
+          monitorDiag = parseFloat(btn.dataset.diag);
+          setActiveBtn(document.getElementById("monitorBtns"), btn);
+          renderChart();
+          updateCalibrationCard();
+        });
+
+      document
+        .getElementById("distBtns")
+        .addEventListener("click", function (e) {
+          var btn = e.target.closest(".btn");
+          if (!btn) return;
+          distanceM = parseFloat(btn.dataset.dist);
+          setActiveBtn(document.getElementById("distBtns"), btn);
+          renderChart();
+        });
+
+      document
+        .getElementById("eyeBtns")
+        .addEventListener("click", function (e) {
+          var btn = e.target.closest(".btn");
+          if (!btn) return;
+          coverEye = btn.dataset.eye;
+          setActiveBtn(document.getElementById("eyeBtns"), btn);
+          var banner = document.getElementById("eyeBanner");
+          if (coverEye === "none") {
+            banner.classList.remove("visible");
+          } else {
+            banner.classList.add("visible");
+            document.getElementById("eyeIcon").innerHTML =
+              coverEye === "left" ? "&#9680;" : "&#9681;";
+            document.getElementById("eyeText").innerHTML =
+              "Cover your <strong>" +
+              coverEye +
+              "</strong> eye \u2014 testing " +
+              (coverEye === "left" ? "right" : "left") +
+              " eye";
+          }
+        });
+
+      document
+        .getElementById("shuffleBtn")
+        .addEventListener("click", function () {
+          letterSeed = Math.floor(Math.random() * 1000);
+          revealedLine = null;
+          renderChart();
+        });
+
+      function updateCalibrationCard() {
+        var ppi = getCSS_PPI();
+        var el = document.getElementById("cardOutline");
+        el.style.width = 85.6 * (ppi / 25.4) + "px";
+        el.style.height = 53.98 * (ppi / 25.4) + "px";
+      }
+
+      document
+        .getElementById("calibrateBtn")
+        .addEventListener("click", function () {
+          updateCalibrationCard();
+          document.getElementById("calibrationModal").classList.add("visible");
+        });
+      document
+        .getElementById("closeModal")
+        .addEventListener("click", function () {
+          document
+            .getElementById("calibrationModal")
+            .classList.remove("visible");
+        });
+      document
+        .getElementById("calibrationModal")
+        .addEventListener("click", function (e) {
+          if (e.target === e.currentTarget)
+            document
+              .getElementById("calibrationModal")
+              .classList.remove("visible");
+        });
+
+      // Init
+      (function () {
+        var d = detectDevice();
+        monitorDiag = d.diag;
+        distanceM = d.dist;
+        selectByData("monitorBtns", "diag", d.diag);
+        selectByData("distBtns", "dist", d.dist);
+        var banner = document.getElementById("deviceBanner");
+        document.getElementById("deviceText").innerHTML =
+          "Detected: <strong>" +
+          d.name +
+          "</strong> \u2014 screen and distance auto-selected";
+        banner.classList.add("visible");
+        renderChart();
+      })();
+
+      window.addEventListener("resize", renderChart);
+      document.addEventListener("gesturestart", function (e) {
+        e.preventDefault();
+      });
+    </script>
+  </body>
+</html>
